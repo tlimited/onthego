@@ -1,41 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
+    <title>Ruter To Go - Config page</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Onthego by tlimited</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Onthego</h1>
-        <p></p>
+    <div data-role="page" id="main">
+      <div data-role="header" class="jqm-header">
+        <h1><span style="color:red">#</span> On the Go</h1>
+      </div>
 
-        <p class="view"><a href="https://github.com/tlimited/onthego">View the Project on GitHub <small>tlimited/onthego</small></a></p>
+      <div data-role="content">
+
+        <div data-role="fieldcontain">
+          <label for="special-feature">Choose language:</label>
+          <select name="special-feature" id="language" >
+            <option value="no">Norsk</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <div class="ui-body">
+          <fieldset class="ui-grid-a">
+              <!-- <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">Cancel</button></div> -->
+              <div class="ui-block-b">
+                <button type="submit" data-theme="a" id="b-submit">Submit</button>
+              </div>
+          </fieldset>
+        </div>
 
 
-        <ul>
-          <li><a href="https://github.com/tlimited/onthego/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/tlimited/onthego/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/tlimited/onthego">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <p>test</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/tlimited">tlimited</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+      </div>
+ <div data-role="content">
+        <div class="ui-body ui-body-a ui-corner-all">
+          <h3>Got feedback?</h3>
+          <p>
+          Please give the app a thumbs up if you find it useful. It's very much appreciated.
+          </p>
+          <p>
+          Feel free to contact me if you're experiencing any problems or just want to say hi:
+            <a href="mailto:tommyvitikka@gmail.com">
+              Tommy Gamst Vitikka
+            </a>
+          </p>
+        </div>
+        </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+
+    <script>
+      function saveOptions() {
+        var options = {}
+        var $languageSelect = $('#language');
+        var languageCode = $languageSelect.val();
+        options['language'] = languageCode;
+        return options;
+      }
+
+      $().ready(function() {
+        // $("#b-cancel").click(function() {
+        //   document.location = "pebblejs://close";
+        // });
+        $("#b-submit").on('click', function() {
+          document.location = "pebblejs://close#" + encodeURIComponent(JSON.stringify( saveOptions() ));
+        });
+        console.log(window.location.search);
+        if( window.location.search.length ) {
+          var obj = jQuery.parseJSON(decodeURIComponent( window.location.search.substring(1) ));
+          for(key in obj) {
+            console.log(obj[key]);
+            $("#"+[key]).val(obj[key]).change();
+          }
+
+        }
+      });
+    </script>
+
   </body>
 </html>
