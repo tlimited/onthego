@@ -77,7 +77,7 @@
           console.log("submitted config: " +chosenLang);
 
           localStorage.setItem('language', chosenLang);
-          document.location = "pebblejs://close#" + encodeURIComponent('language='+chosenLang));
+          document.location = "pebblejs://close#" + encodeURIComponent('language='+chosenLang);
         });
 
         var langParam = getParameterByName('language');
