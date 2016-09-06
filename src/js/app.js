@@ -33,11 +33,11 @@ try {
 	console.log('couldnt get language');
 }
 Settings.config(
-	{ url: 'https://tlimited.github.io/onthego/index.html') },
-  function(e) {
-    // configurable opened/closed. 
-    Settings.option('language', LANG);
-  }
+	{ url: 'https://tlimited.github.io/onthego/index.html' },
+	function(e) {
+		// configurable opened/closed. 
+		Settings.option('language', LANG);
+	}
 );
 
 var TEXTS = {
