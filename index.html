@@ -58,27 +58,45 @@
         var $languageSelect = $('#language');
         var languageCode = $languageSelect.val();
         options['language'] = languageCode;
+        console.log(options);
         return options;
       }
 
+
       $().ready(function() {
 
-        $('#footer #debug').html('Lang: ' + localStorage.getItem('language'));
+
+        $('#footer #debug').html('Lang1: ' + localStorage.getItem('language'));
+
         // $("#b-cancel").click(function() {
         //   document.location = "pebblejs://close";
         // });
+        // 
         $("#b-submit").on('click', function() {
-          document.location = "pebblejs://close#" + encodeURIComponent(JSON.stringify( saveOptions() ));
+          var chosenLang = $('#language').val()
+          console.log("submitted config: " +chosenLang);
+
+          localStorage.setItem('language', chosenLang);
+          document.location = "pebblejs://close#" + encodeURIComponent('language='+chosenLang));
         });
-        // console.log(window.location.search);
-        if( window.location.search.length ) {
-          var obj = jQuery.parseJSON(decodeURIComponent( window.location.search.substring(1) ));
-          for(key in obj) {
-            console.log(obj[key]);
-            $("#"+[key]).val(obj[key]).change();
-          }
-        }
+
+        var langParam = getParameterByName('language');
+        if(langParam.length)
+          $("#language").val(langParam).change();
+
       });
+
+
+      // get GET-params from url
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
     </script>
 
   </body>
