@@ -1,0 +1,54 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        "location",
+        "configurable"
+    ],
+    "companyName": "Tommy Gamst Vitikka",
+    "longName": "Ruter - On the Go",
+    "projectType": "pebblejs",
+    "resources": {
+        "media": [
+            {
+                "file": "images/menu_icon.png",
+                "name": "IMAGE_MENU_ICON",
+                "type": "bitmap"
+            },
+            {
+                "file": "images/logo_splash.png",
+                "name": "IMAGE_LOGO_SPLASH",
+                "type": "bitmap"
+            },
+            {
+                "file": "images/tile_splash.png",
+                "name": "IMAGE_TILE_SPLASH",
+                "type": "bitmap"
+            },
+            {
+                "file": "fonts/UbuntuMono-Regular.ttf",
+                "name": "MONO_FONT_14",
+                "type": "font"
+            },
+            {
+                "file": "images/rutericon28x28dithered.png",
+                "menuIcon": true,
+                "name": "IMAGES_RUTERICON28X28DITHERED_PNG",
+                "type": "bitmap"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "Ruter - On the Go",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "267d757d-6201-49b4-a734-ecf429acc73d",
+    "versionCode": 1,
+    "versionLabel": "1.53",
+    "watchapp": {
+        "hiddenApp": false,
+        "watchface": false
+    }
+}
