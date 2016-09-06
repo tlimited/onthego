@@ -33,11 +33,11 @@ try {
 	console.log('couldnt get language');
 }
 Settings.config(
-	{ url: 'http://vitikka.no/xhr/ruter-to-go-config.php?' + encodeURIComponent(JSON.stringify( '#language='+LANG )) },
+	{ url: 'https://tlimited.github.io/onthego/index.html') },
   function(e) {
-    // console.log('opening configurable');
-  },
-  function(e) {}
+    // configurable opened/closed. 
+    Settings.option('language', LANG);
+  }
 );
 
 var TEXTS = {
