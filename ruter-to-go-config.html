@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruter To Go - Config page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  </head>
+  <body>
+    <div data-role="page" id="main">
+      <div data-role="header" class="jqm-header">
+        <h1><span style="color:red">#</span> On the Go</h1>
+      </div>
+
+      <div data-role="content">
+
+        <div data-role="fieldcontain">
+          <label for="special-feature">Choose language:</label>
+          <select name="special-feature" id="language" >
+            <option value="no">Norsk</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <div class="ui-body">
+          <fieldset class="ui-grid-a">
+              <!-- <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">Cancel</button></div> -->
+              <div class="ui-block-b">
+                <button type="submit" data-theme="a" id="b-submit">Submit</button>
+              </div>
+          </fieldset>
+        </div>
+
+
+      </div>
+ <div data-role="content">
+        <div class="ui-body ui-body-a ui-corner-all">
+          <h3>Got feedback?</h3>
+          <p>
+          Please give the app a thumbs up if you find it useful. It's very much appreciated.
+          </p>
+          <p>
+          Feel free to contact me if you're experiencing any problems or just want to say hi:
+            <a href="mailto:tommy@designcontainer.no">
+              Tommy Vitikka
+            </a>
+          </p>
+        </div>
+        </div>
+    </div>
+
+    <script>
+      function saveOptions() {
+        var options = {}
+        var $languageSelect = $('#language');
+        var languageCode = $languageSelect.val();
+        options['language'] = languageCode;
+        return options;
+      }
+
+      $().ready(function() {
+        // $("#b-cancel").click(function() {
+        //   document.location = "pebblejs://close";
+        // });
+        $("#b-submit").on('click', function() {
+          document.location = "pebblejs://close#" + encodeURIComponent(JSON.stringify( saveOptions() ));
+        });
+        console.log(window.location.search);
+        if( window.location.search.length ) {
+          var obj = jQuery.parseJSON(decodeURIComponent( window.location.search.substring(1) ));
+          for(key in obj) {
+            console.log(obj[key]);
+            $("#"+[key]).val(obj[key]).change();
+          }
+
+        }
+      });
+    </script>
+
+  </body>
+</html>
