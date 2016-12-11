@@ -81,7 +81,7 @@
         });
 
         var langParam = getParameterByName('language');
-        if(langParam.length)
+        if(langParam && langParam.length)
           $("#language").val(langParam).change();
 
       });
