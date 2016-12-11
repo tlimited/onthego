@@ -80,9 +80,9 @@
           document.location = "pebblejs://close#" + encodeURIComponent('language='+chosenLang);
         });
 
-        var langParam = getParameterByName('language');
-        if(langParam && langParam.length)
-          $("#language").val(langParam).change();
+        var hasLanguage = localStorage.getItem('language');
+        if(hasLanguage && hasLanguage.length)
+          $("#language").val(hasLanguage).change();
         else
           $("#language").val('no').change(); // default to norwegian
 
