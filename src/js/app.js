@@ -22,23 +22,23 @@
  * Unofficial, but awesome. Find closest stop – Find earliest transport
  */
 
-// Set a configurable with the open callback
+// Set a configurable/settings page
 var Settings = require('settings');
 var LANG = 'no';
-if (!Settings.option('language') )
-	Settings.option('language', LANG);
+
 try {
-	LANG = (Settings.option('language') && Settings.option('language').length ? Settings.option('language') : 'no'); // if not set, set to default: no	
-} catch(err) {
-	console.log('couldnt get language');
-}
+	LANG = (!Settings.option('language') || Settings.option('language') === null ? 'no' : Settings.option('language') ); // if not set, set to default: no	
+} catch(err) {}
+
 Settings.config(
 	{ url: 'https://tlimited.github.io/onthego/index.html' },
 	function(e) {
 		// configurable opened/closed. 
+		LANG = Settings.option('language');
 		Settings.option('language', LANG);
 	}
 );
+
 
 var TEXTS = {
 	mintogo: {
