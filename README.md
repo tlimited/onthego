@@ -1,5 +1,7 @@
 ## Pebble-app "Ruter – On the Go"
 
+**Made my life easier on Pebble Steel. Past.**
+
 ### App description
 Short desc: **Get the closest Ruter-stops in Oslo and the realtime schedule of those stops. Simply.**
 
@@ -16,7 +18,7 @@ Main features is the use of **geolocation** and use of the **Ruter realtime API*
 
 
 #### Contact and credits:
-Feel free to contact me if you would like to collaborate. Or just commit something..
+Feel free to contact me if you would like to collaborate.
 
 --
 Ruter On the Go for Pebble, 
